@@ -16,7 +16,7 @@ const OrderBook=()=>{
     useEffect(()=>{
     axios.get(`${baseUrl}/${pathParams}?${queryParams}`)
         .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             setOrder(response.data)
         }, error => {
             console.log(error);
