@@ -34,7 +34,8 @@ const OrderBook=()=>{
     // }
       return (
         <div className="App">
-          <h1 className={classes.title}><span className={classes['bitfinex-text']}>BITFINEX</span> Order Book</h1>
+          <h1 className={classes.title}><span className={classes['bitfinex-text']}>BITFINEX</span></h1>
+          <h3 className={classes.title}>Order Book: BTC/USD</h3>
           <div className={classes['table-wrapper']}>
           <Table aria-label="simple table" className={classes['table-container']}>  
             <TableHead className={classes['table-head']}>
