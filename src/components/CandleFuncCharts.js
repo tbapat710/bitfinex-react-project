@@ -52,7 +52,7 @@ const CandleFuncCharts=()=>{
     useEffect(()=>{
         axios.get(`${baseUrl}/${pathParams}?${queryParams}`)
     .then(response => {
-        console.log(response.data);
+        
         setValue(response.data)
     }, error => {
         console.log(error);
