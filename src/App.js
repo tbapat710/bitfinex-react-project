@@ -1,9 +1,15 @@
 import OrderBook from './components/OrderBook';
+import CandleCharts from './components/CandleCharts';
+import CandleFuncCharts from './components/CandleFuncCharts'
 import './App.css';
 
 function App() {
     return(
-        <><OrderBook/></>
+        <>
+        <CandleFuncCharts/>
+        {/* <CandleCharts/> */}
+        <OrderBook/>
+        </>
     )
 }
 
