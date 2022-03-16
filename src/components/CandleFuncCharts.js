@@ -39,15 +39,18 @@ import classes from './CandleFuncCharts.module.css'
 
   const axios = require('axios')
   const baseUrl = "https://api-pub.bitfinex.com/v2/";
-  const pathParams = "candles/trade:1m:tBTCUSD/hist"
+  
   const queryParams = "limit=50"
 
 const CandleFuncCharts=()=>{
 
-   
+    
     const [options,setOptions]=useState(optionsData);
     const [value,setValue]=useState([])
     const [series,setSeries]=useState([]);
+    const [duration,setDuration]=useState('1m')
+
+    const pathParams = `candles/trade:${duration}:tBTCUSD/hist`
 
     useEffect(()=>{
         axios.get(`${baseUrl}/${pathParams}?${queryParams}`)
@@ -82,6 +85,11 @@ const CandleFuncCharts=()=>{
             <h1 className={classes.title}><span className={classes['bitfinex-text']}>BITFINEX</span></h1>
             <h3 className={classes.title}>Chart: BTC/USD</h3>
             <ReactApexChart options={options} series={series} type="candlestick" height={350} />
+            <button onClick={()=>setDuration('1D')}>1D</button>
+            <button onClick={()=>setDuration('30m')}>30m</button>
+            <button onClick={()=>setDuration('1h')}>1h</button>
+            <button onClick={()=>setDuration('12h')}>12h</button>
+            <button onClick={()=>setDuration('1W')}>1W</button>
         </div>
         )
     }   

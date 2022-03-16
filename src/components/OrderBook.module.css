@@ -2,6 +2,8 @@
     max-width: 1000px;
     height: 100vh;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
 }
 .MuiTableCell-root{
     color: #fff !important;

@@ -49,7 +49,10 @@ const OrderBook=()=>{
               </TableRow>
             </TableHead>
             <TableBody className={classes['table-body']}>
-              {order.map((data) => (
+              {order.map((data) => {
+                if(data[2]>0){
+                
+                  return(
                 <TableRow >
                   
                   <TableCell align="right">{data[1]}</TableCell>
@@ -58,9 +61,42 @@ const OrderBook=()=>{
                   <TableCell align="right">{data[0]}</TableCell>
 
                 </TableRow>
-              ))}
+                  )}
+              })}
             </TableBody>
             </Table>
+
+            <Table aria-label="simple table" className={classes['table-container']}>  
+            <TableHead className={classes['table-head']}>
+              <TableRow>
+            
+                <TableCell align="right">Count</TableCell>
+                <TableCell align="right">Amount</TableCell>
+                <TableCell align="right">Total</TableCell>
+                <TableCell align="right">Price</TableCell>
+                
+              </TableRow>
+            </TableHead>
+            <TableBody className={classes['table-body']}>
+              {order.map((data) => {
+                // console.log(data)
+                if(data[2]<=0){
+                
+                return(
+                <TableRow >
+                  
+                  <TableCell align="right">{data[1]}</TableCell>
+                  <TableCell align="right">{Math.abs(data[2])}</TableCell>
+                  <TableCell align="right">{Math.abs(data[1]*data[2])}</TableCell>
+                  <TableCell align="right">{data[0]}</TableCell>
+
+                </TableRow>
+                )}
+              })}
+            </TableBody>
+            </Table>
+
+            
             </div>
           </div>
       );
