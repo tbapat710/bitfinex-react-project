@@ -7,6 +7,7 @@
 }
 .MuiTableCell-root{
     color: #fff !important;
+    
 }
 .title{
     text-align: center;
@@ -23,7 +24,11 @@
 .table-head th{
     color: #fff !important;
     font-size: 1rem;
+    border-bottom: none !important;
 }
 .table-body td{
     color: #fff !important;
+    border-bottom: none !important;
+    line-height: 0 !important;
+    padding: 10px !important;
 }
