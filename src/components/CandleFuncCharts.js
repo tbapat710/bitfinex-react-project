@@ -8,7 +8,8 @@ import classes from './CandleFuncCharts.module.css'
       height: 350,
       background: '#172d3e',
       zoom: {
-        enabled: true}
+        enabled: true
+        }
     },
     title: {
       text: 'BTC/USD Chart',
@@ -28,6 +29,7 @@ import classes from './CandleFuncCharts.module.css'
                 colors:'#fff'
             }
         },
+        formatter: (value) => Math.floor(value),
       min:undefined,
       max:undefined,
       tooltip: {
@@ -40,7 +42,7 @@ import classes from './CandleFuncCharts.module.css'
   const axios = require('axios')
   const baseUrl = "https://api-pub.bitfinex.com/v2/";
   
-  const queryParams = "limit=50"
+  const queryParams = "limit=100"
 
 const CandleFuncCharts=()=>{
 
@@ -48,7 +50,7 @@ const CandleFuncCharts=()=>{
     const [options,setOptions]=useState(optionsData);
     const [value,setValue]=useState([])
     const [series,setSeries]=useState([]);
-    const [duration,setDuration]=useState('1m')
+    const [duration,setDuration]=useState('12h')
 
     const pathParams = `candles/trade:${duration}:tBTCUSD/hist`
 
@@ -66,13 +68,17 @@ const CandleFuncCharts=()=>{
         let OHLC=value.map((val)=>{
             return {
                 x:new Date(val[0]),
-                y: [val[1],val[2],val[3],val[4]]
+                y: [val[1],val[3],val[4],val[2]]
             }
         })
         const updatedSeriesData=[{
             data:OHLC
         }]
         setSeries(updatedSeriesData)
+
+
+
+
         
     },[value])
 
@@ -81,6 +87,7 @@ const CandleFuncCharts=()=>{
 
     
     return(
+        <div className={classes['chart-wrapper']}>
         <div id="chart">
             <h1 className={classes.title}><span className={classes['bitfinex-text']}>BITFINEX</span></h1>
             <h3 className={classes.title}>Chart: BTC/USD</h3>
@@ -88,10 +95,13 @@ const CandleFuncCharts=()=>{
             <button onClick={()=>setDuration('1D')}>1D</button>
             <button onClick={()=>setDuration('30m')}>30m</button>
             <button onClick={()=>setDuration('1h')}>1h</button>
-            <button onClick={()=>setDuration('12h')}>12h</button>
+            <button onClick={()=>setDuration('1m')}>1m</button>
             <button onClick={()=>setDuration('1W')}>1W</button>
+        </div>
         </div>
         )
     }   
 
 export default CandleFuncCharts;
+
+//https://www.youtube.com/watch?v=3KPW9VMyBHA

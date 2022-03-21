@@ -4,3 +4,7 @@
 .bitfinex-text{
     color: green;
 }
+.chart-wrapper{
+    max-width: 1000px;
+    margin: 0 auto;
+}
