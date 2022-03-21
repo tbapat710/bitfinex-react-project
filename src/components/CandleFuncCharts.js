@@ -8,7 +8,8 @@ import classes from './CandleFuncCharts.module.css'
       height: 350,
       background: '#172d3e',
       zoom: {
-        enabled: true}
+        enabled: true
+        }
     },
     title: {
       text: 'BTC/USD Chart',
@@ -40,7 +41,7 @@ import classes from './CandleFuncCharts.module.css'
   const axios = require('axios')
   const baseUrl = "https://api-pub.bitfinex.com/v2/";
   
-  const queryParams = "limit=50"
+  const queryParams = "limit=150"
 
 const CandleFuncCharts=()=>{
 
@@ -66,7 +67,7 @@ const CandleFuncCharts=()=>{
         let OHLC=value.map((val)=>{
             return {
                 x:new Date(val[0]),
-                y: [val[1],val[2],val[3],val[4]]
+                y: [val[1],val[3],val[4],val[2]]
             }
         })
         const updatedSeriesData=[{
@@ -81,6 +82,7 @@ const CandleFuncCharts=()=>{
 
     
     return(
+        <div className={classes['chart-wrapper']}>
         <div id="chart">
             <h1 className={classes.title}><span className={classes['bitfinex-text']}>BITFINEX</span></h1>
             <h3 className={classes.title}>Chart: BTC/USD</h3>
@@ -91,7 +93,10 @@ const CandleFuncCharts=()=>{
             <button onClick={()=>setDuration('12h')}>12h</button>
             <button onClick={()=>setDuration('1W')}>1W</button>
         </div>
+        </div>
         )
     }   
 
 export default CandleFuncCharts;
+
+//https://www.youtube.com/watch?v=3KPW9VMyBHA
