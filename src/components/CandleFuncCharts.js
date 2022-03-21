@@ -29,6 +29,7 @@ import classes from './CandleFuncCharts.module.css'
                 colors:'#fff'
             }
         },
+        formatter: (value) => Math.floor(value),
       min:undefined,
       max:undefined,
       tooltip: {
@@ -41,7 +42,7 @@ import classes from './CandleFuncCharts.module.css'
   const axios = require('axios')
   const baseUrl = "https://api-pub.bitfinex.com/v2/";
   
-  const queryParams = "limit=150"
+  const queryParams = "limit=100"
 
 const CandleFuncCharts=()=>{
 
@@ -49,7 +50,7 @@ const CandleFuncCharts=()=>{
     const [options,setOptions]=useState(optionsData);
     const [value,setValue]=useState([])
     const [series,setSeries]=useState([]);
-    const [duration,setDuration]=useState('1m')
+    const [duration,setDuration]=useState('12h')
 
     const pathParams = `candles/trade:${duration}:tBTCUSD/hist`
 
@@ -74,6 +75,10 @@ const CandleFuncCharts=()=>{
             data:OHLC
         }]
         setSeries(updatedSeriesData)
+
+
+
+
         
     },[value])
 
@@ -90,7 +95,7 @@ const CandleFuncCharts=()=>{
             <button onClick={()=>setDuration('1D')}>1D</button>
             <button onClick={()=>setDuration('30m')}>30m</button>
             <button onClick={()=>setDuration('1h')}>1h</button>
-            <button onClick={()=>setDuration('12h')}>12h</button>
+            <button onClick={()=>setDuration('1m')}>1m</button>
             <button onClick={()=>setDuration('1W')}>1W</button>
         </div>
         </div>
