@@ -9,7 +9,8 @@ import classes from './CandleFuncCharts.module.css'
       background: '#172d3e',
       zoom: {
         enabled: true
-        }
+        },
+      
     },
     title: {
       text: 'BTC/USD Chart',
@@ -68,7 +69,7 @@ const CandleFuncCharts=()=>{
         let OHLC=value.map((val)=>{
             return {
                 x:new Date(val[0]),
-                y: [val[1],val[3],val[4],val[2]]
+                y: [Math.floor(val[1]),Math.floor(val[3]),Math.floor(val[4]),Math.floor(val[2])]
             }
         })
         const updatedSeriesData=[{
