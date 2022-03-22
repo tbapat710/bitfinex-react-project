@@ -10,6 +10,13 @@ import classes from './CandleFuncCharts.module.css'
       zoom: {
         enabled: true
         },
+      events: {
+          mouseMove: function(event, chartContext, config) {
+              console.log(config.w)
+              console.log(event)
+          }
+          }
+    
       
     },
     title: {
@@ -43,7 +50,7 @@ import classes from './CandleFuncCharts.module.css'
   const axios = require('axios')
   const baseUrl = "https://api-pub.bitfinex.com/v2/";
   
-  const queryParams = "limit=100"
+  const queryParams = "limit=150"
 
 const CandleFuncCharts=()=>{
 
@@ -76,16 +83,8 @@ const CandleFuncCharts=()=>{
             data:OHLC
         }]
         setSeries(updatedSeriesData)
-
-
-
-
         
     },[value])
-
-    
-
-
     
     return(
         <div className={classes['chart-wrapper']}>
